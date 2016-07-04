@@ -57,10 +57,10 @@ public class StatusbarTransparent extends CordovaPlugin {
 
     private boolean isSupported(CallbackContext callback) {
         if(VERSION.SDK_INT >= VERSION_CODES.KITKAT) {
-            callback.success(true);
+            callback.success("true");
             return true;
         } else {
-            callback.success(false);
+            callback.success("false");
             return false;
         }
     }
