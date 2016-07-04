@@ -11,16 +11,18 @@
 
 	<engines>
 		<engine name="cordova" version=">=3.0.0" />
-	</engines>    
-
-	<js-module src="www/statusbar.js" name="statusbar">
-		<clobbers target="window.statusbarTransparent" />
-	</js-module>
+	</engines>
 
 	<platform name="android">
+
+		<js-module src="www/statusbar.js" name="statusbar">
+			<clobbers target="window.statusbarTransparent" />
+		</js-module>
+
 		<config-file target="res/xml/config.xml" parent="/*">
 			<feature name="StatusbarTransparent">   
 				<param name="android-package" value="net.ekuwang.cordova.plugin.statusbar.StatusbarTransparent" />
+				<param name="onload" value="true" />
 			</feature>
 		</config-file>
 		
