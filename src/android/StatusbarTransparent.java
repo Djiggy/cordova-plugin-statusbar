@@ -19,7 +19,6 @@ public class StatusbarTransparent extends CordovaPlugin {
 					cordova.getActivity().getWindow().addFlags(LayoutParams.FLAG_TRANSLUCENT_STATUS);
 				}
 			});
-			callback.success();
 		}
 	}
 
