@@ -12,6 +12,8 @@ import android.view.WindowManager.LayoutParams;
 import android.graphics.Color;
 import android.view.Window;
 
+import android.util.DisplayMetrics;
+
 import android.os.Build.VERSION;
 import android.os.Build.VERSION_CODES;
 
@@ -52,7 +54,9 @@ public class StatusbarTransparent extends CordovaPlugin {
         window.getDecorView().getWindowVisibleDisplayFrame(rectangle);
         int statusBarHeight = rectangle.top;
 
-        callback.success(statusBarHeight);
+        DisplayMetrics metrics = cordova.getActivity().getResources().getDisplayMetrics();
+
+        callback.success(Float.toString((float)statusBarHeight / metrics.density));
     }
 
     private boolean isSupported(CallbackContext callback) {
