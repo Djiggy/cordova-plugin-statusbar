@@ -21,7 +21,7 @@ public class StatusbarTransparent extends CordovaPlugin {
 
     @Override
     protected void pluginInitialize() {
-        if(VERSION.SDK_INT >= VERSION_CODES.KITKAT) {
+        if(VERSION.SDK_INT > VERSION_CODES.KITKAT) {
             cordova.getActivity().runOnUiThread( new Runnable() {
                 public void run() {
                     Window window = cordova.getActivity().getWindow();
@@ -60,7 +60,7 @@ public class StatusbarTransparent extends CordovaPlugin {
     }
 
     private boolean isSupported(CallbackContext callback) {
-        if(VERSION.SDK_INT >= VERSION_CODES.KITKAT) {
+        if(VERSION.SDK_INT > VERSION_CODES.KITKAT) {
             callback.success("true");
             return true;
         } else {
