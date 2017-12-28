@@ -1,5 +1,5 @@
 {
-    "name": "cordova-plugin-transparent-status-bar",
+    "name": "cordova-plugin-transparent-status-bar-test",
     "version": "1.1.0",
     "description": "Cordova plugin to enable transparent status bar on Android devices",
     "cordova": {
