@@ -14,8 +14,6 @@ import android.view.Window;
 
 import android.util.DisplayMetrics;
 
-import android.os.Build.VERSION;
-import android.os.Build.VERSION_CODES;
 
 public class StatusbarTransparent extends CordovaPlugin {
 
@@ -36,7 +34,31 @@ public class StatusbarTransparent extends CordovaPlugin {
     @Override
     public boolean execute(String action, JSONArray args, CallbackContext callback) throws JSONException {
         // grab the correct methods
-        if ("getStatusbarHeight".equalsIgnoreCase(action)) {
+        if(action.equalsIgnoreCase("enable")) {
+			if(VERSION.SDK_INT >= VERSION_CODES.KITKAT) {
+				cordova.getActivity().runOnUiThread( new Runnable() {
+					public void run() {
+						cordova.getActivity().getWindow().addFlags(LayoutParams.FLAG_TRANSLUCENT_STATUS);
+					}
+				});
+				callback.success();
+			} else {
+				callback.error("not supported");
+			}
+			return true;
+		} else if(action.equalsIgnoreCase("disable")) {
+			if(VERSION.SDK_INT >= VERSION_CODES.KITKAT) {
+				cordova.getActivity().runOnUiThread( new Runnable() {
+					public void run() {
+						cordova.getActivity().getWindow().clearFlags(LayoutParams.FLAG_TRANSLUCENT_STATUS);
+					}
+				});
+				callback.success();
+			} else {
+				callback.error("not supported");
+			}
+			return true;
+		} else if ("getStatusbarHeight".equalsIgnoreCase(action)) {
             getStatusBarHeight(callback);
             return true;
         } else if ("isSupported".equalsIgnoreCase(action)) {
